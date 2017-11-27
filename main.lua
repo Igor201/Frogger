@@ -7,7 +7,8 @@
 -- Your code here
 
 local sapo = display.newCircle( display.contentCenterX, display.contentCenterY, 30 )
-local carro = display.newRect( - 50, 150, 100, 30 )
+local carro = display.newRect( 50, 150, 100, 30 )
+
 
 
 local botaoesquerda = display.newRect( 25, 465, 100, 30 )
@@ -19,9 +20,14 @@ local botaocima = display.newRect( 160, 430, 100, 30 )
 local botaobaixo = display.newRect( 160, 465, 100, 30 )
 	  botaobaixo:setFillColor( 0.3 )
 
-function moverCarro(event)
-	
-end	
+function movimento()
+	carro.x = carro.x + 20
+end
+
+
+ timer.performWithDelay(1000,movimento, 0)
+
+
 
 function moverCima( event )
 	if event.phase == "began" then
@@ -35,7 +41,7 @@ function moverBaixo( event )
 	if event.phase == "began" then
 		if sapo.y < display.contentHeight - 100 then
 			sapo.y = sapo.y + 20
-		end	
+		end
 	end
 end
 
