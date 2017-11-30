@@ -5,8 +5,12 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
+local physics = require ("physics")
+physics.start()
 
 local sapo = display.newCircle( display.contentCenterX, display.contentCenterY, 30 )
+physics.addBody( sapo, "static")
+
 local carro = display.newRect( 50, 150, 100, 30 )
 
 
@@ -20,12 +24,24 @@ local botaocima = display.newRect( 160, 430, 100, 30 )
 local botaobaixo = display.newRect( 160, 465, 100, 30 )
 	  botaobaixo:setFillColor( 0.3 )
 
+function destroiSapo(event)
+	timer.performWithDelay(1, event.target:removeSelf())
+end
+
 function movimento()
+	
 	carro.x = carro.x + 20
+	if carro.x > display.contentWidth + 50 then
+		carro.x = 50
+		carro.y = 150
+	physics.addBody( carro, "dynamic")
+	physics.setGravity( 0, 0 )
+
+	end
 end
 
 
- timer.performWithDelay(1000,movimento, 0)
+ timer.performWithDelay(0500,movimento, 0)
 
 
 
@@ -65,3 +81,4 @@ botaocima:addEventListener("touch", moverCima)
 botaobaixo:addEventListener("touch", moverBaixo)
 botaoesquerda:addEventListener("touch", moverEsquerda)
 botaodireita:addEventListener("touch", moverDireita)
+sapo:addEventListener( "collision", destroiSapo)
