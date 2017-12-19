@@ -80,6 +80,7 @@ cenario.criar()
 carro.criar()
 verificaVida(auxvida)
 verificaVitoria(auxvida)
+vitoria:criarChegada()
 sapo.criar()
 physics.addBody(sapo.corpo, "static")
 end	  

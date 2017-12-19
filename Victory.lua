@@ -8,7 +8,6 @@ local victory = {
 
 function victory:criarChegada()
 
-	  --chegada = display.newRect( display.contentCenterX, display.contentHeight * 0.04, display.contentWidth, 2 )
 	  	victory.chegada = display.newImageRect( "chegada.png", display.contentWidth, 3 )
 		victory.chegada.x = display.contentCenterX
 		victory.chegada.y = display.contentHeight * 0.045

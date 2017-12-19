@@ -22,15 +22,21 @@ function cenario:criar()
     cenario.finalcena = display.newRect(display.contentWidth/2,  display.contentHeight/12, display.contentWidth, display.contentHeight/12)
     cenario.finalcena:setFillColor(0.3, 1, 0.3)
 
+    botaoesquerda = display.newImageRect( "botaoEsquerda.png", 100, 30 )
+    botaoesquerda.x = display.contentWidth / 6
+    botaoesquerda.y = (display.contentCenterY * 2) - 15
 
-    botaoesquerda = display.newRect( 25, 465, 100, 30 )
-      botaoesquerda:setFillColor( 0.3 )
-    botaodireita = display.newRect( 290, 465, 100, 30 )
-      botaodireita:setFillColor( 0.3 )
-    botaocima = display.newRect( 160, 430, 100, 30 )
-      botaocima:setFillColor( 0.3 )
-    botaobaixo = display.newRect( 160, 465, 100, 30 )
-      botaobaixo:setFillColor( 0.3 )
+    botaodireita = display.newImageRect( "botaoDireita.png", 100, 30 )
+    botaodireita.x = display.contentWidth * 0.834
+    botaodireita.y = (display.contentCenterY * 2) - 15
+
+    botaocima = display.newImageRect( "botaoCima.png", 122, 30 )
+    botaocima.x = display.contentCenterX
+    botaocima.y = (display.contentCenterY * 2) - 50
+
+    botaobaixo = display.newImageRect( "botaoBaixo.png", 122, 30 )
+    botaobaixo.x = display.contentCenterX
+    botaobaixo.y = (display.contentCenterY * 2) - 15
 end
 
 return cenario
