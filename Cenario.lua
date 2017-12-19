@@ -21,6 +21,16 @@ function cenario:criar()
 
     cenario.finalcena = display.newRect(display.contentWidth/2,  display.contentHeight/12, display.contentWidth, display.contentHeight/12)
     cenario.finalcena:setFillColor(0.3, 1, 0.3)
+
+
+    botaoesquerda = display.newRect( 25, 465, 100, 30 )
+      botaoesquerda:setFillColor( 0.3 )
+    botaodireita = display.newRect( 290, 465, 100, 30 )
+      botaodireita:setFillColor( 0.3 )
+    botaocima = display.newRect( 160, 430, 100, 30 )
+      botaocima:setFillColor( 0.3 )
+    botaobaixo = display.newRect( 160, 465, 100, 30 )
+      botaobaixo:setFillColor( 0.3 )
 end
 
 return cenario

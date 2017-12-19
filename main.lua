@@ -12,31 +12,53 @@ cenario:criar()
 local carro = require("carro")
 carro:criar()
 local sapo = require("sapo")
+sapo:vida()
 sapo:criar()
+physics.addBody(sapo.corpo, "static")
+physics.setGravity(0,0)
+auxvida = 1
 
-local botaoesquerda = display.newRect( 25, 465, 100, 30 )
-	  botaoesquerda:setFillColor( 0.3 )
-local botaodireita = display.newRect( 290, 465, 100, 30 )
-	  botaodireita:setFillColor( 0.3 )
-local botaocima = display.newRect( 160, 430, 100, 30 )
-	  botaocima:setFillColor( 0.3 )
-local botaobaixo = display.newRect( 160, 465, 100, 30 )
-	  botaobaixo:setFillColor( 0.3 )
-
-function redefinirsapo()
-
-physics.removeBody(sapo)
-
-end	  
-
-function destroiSapo(event)
-
-physics.removeBody(sapo)
-sapo.x = display.contentCenterX
-sapo.y = display.contentHeight - 100
-physics.addBody( sapo, "static")
-
+function removeSapo( )
+	timer.performWithDelay(1, sapo.corpo:removeSelf())
 end
+
+function removeCenario()
+timer.performWithDelay(1, cenario.rua:removeSelf())
+timer.performWithDelay(1, cenario.rua2:removeSelf())
+timer.performWithDelay(1, cenario.acostamento:removeSelf())
+timer.performWithDelay(1, cenario.iniciocena:removeSelf())
+timer.performWithDelay(1, cenario.finalcena:removeSelf())
+end
+
+function removeCarro()
+timer.performWithDelay(1, carro.carro1:removeSelf())
+timer.performWithDelay(1, carro.carro2:removeSelf())
+timer.performWithDelay(1, carro.carro3:removeSelf())
+timer.performWithDelay(1, carro.carro4:removeSelf())
+timer.performWithDelay(1, carro.carro5:removeSelf())
+timer.performWithDelay(1, carro.carro6:removeSelf())
+end
+
+function verificaVida(auxvida)
+	if auxvida == 2 then
+		 sapo:vida2()
+	end
+	if auxvida == 3 then
+		sapo:vida3()	
+	end		
+end
+
+function colisao(event)
+auxvida = auxvida + 1	
+removeSapo()	
+removeCenario()
+removeCarro()
+cenario.criar()
+carro.criar()
+verificaVida(auxvida)
+sapo.criar()
+physics.addBody(sapo.corpo, "static")
+end	  
 
 function movimentopista1()
 	
@@ -141,4 +163,4 @@ botaocima:addEventListener("touch", moverCima)
 botaobaixo:addEventListener("touch", moverBaixo)
 botaoesquerda:addEventListener("touch", moverEsquerda)
 botaodireita:addEventListener("touch", moverDireita)
-sapo.corpo:addEventListener( "collision", destroiSapo)
+sapo.corpo:addEventListener("collision", colisao)
