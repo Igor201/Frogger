@@ -11,8 +11,13 @@ local cenario = require("cenario")
 cenario:criar()
 local carro = require("carro")
 carro:criar()
+local life = require("life")
+life:vida()
+local vitoria = require("victory")
+vitoria:criarChegada()
+physics.addBody(vitoria.chegada, "dynamic")
+physics.setGravity(0,0)
 local sapo = require("sapo")
-sapo:vida()
 sapo:criar()
 physics.addBody(sapo.corpo, "static")
 physics.setGravity(0,0)
@@ -41,11 +46,29 @@ end
 
 function verificaVida(auxvida)
 	if auxvida == 2 then
-		 sapo:vida2()
+		 life:vida2()
 	end
 	if auxvida == 3 then
-		sapo:vida3()	
+		life:vida3()	
 	end		
+end
+
+function verificaVitoria(auxvida)
+	if auxvida -1 == 1 then
+		 vitoria:vitoria1()
+	end
+	if auxvida -1 == 2 then
+		 vitoria:vitoria2()
+	end
+	if auxvida -1 == 3 then
+		 vitoria:vitoria3()
+	end
+	if auxvida -1 == 4 then
+		 vitoria:vitoria4()
+	end
+	if auxvida -1 == 5 then
+		 vitoria:vitoria5()
+	end
 end
 
 function colisao(event)
@@ -56,6 +79,7 @@ removeCarro()
 cenario.criar()
 carro.criar()
 verificaVida(auxvida)
+verificaVitoria(auxvida)
 sapo.criar()
 physics.addBody(sapo.corpo, "static")
 end	  
