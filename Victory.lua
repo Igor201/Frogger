@@ -89,5 +89,11 @@ function victory:vitoria5( )
 		vitoria5.y = display.contentHeight * 0.09
 end
 
+function victory:vitoria()
+
+		derrota = display.newImageRect( "vitoria.png", display.contentWidth, display.contentHeight )
+		derrota.x = display.contentCenterX 
+		derrota.y = display.contentCenterY	
+end
 
 return victory

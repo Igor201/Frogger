@@ -7,7 +7,7 @@
 -- Your code here
 local physics = require ("physics")
 physics.start()
-physics.setDrawMode("debug")
+--physics.setDrawMode("debug")
 local cenario = require("cenario")
 cenario:criar()
 local carro = require("carro")
@@ -21,7 +21,7 @@ physics.setGravity(0,0)
 local sapo = require("sapo")
 sapo:criar()
 sapo:adicionaCorpoSapo()
-auxvida = 1
+auxvida = 3
 auxvitoria = 1
 
 function removeSapo( )
@@ -60,14 +60,26 @@ physics.setGravity( 0, 0 )
 physics.addBody( carro.carro6, "dynamic")
 physics.setGravity( 0, 0 )
 
+carro.carro1:addEventListener("collision", colisaoCarro)
+carro.carro2:addEventListener("collision", colisaoCarro)
+carro.carro3:addEventListener("collision", colisaoCarro)
+carro.carro4:addEventListener("collision", colisaoCarro)
+carro.carro5:addEventListener("collision", colisaoCarro)
+carro.carro6:addEventListener("collision", colisaoCarro)
 end
 
 function verificaVida(auxvida)
+	if auxvida == 3 then
+		 life:vida()
+	end	
 	if auxvida == 2 then
 		 life:vida2()
 	end
-	if auxvida == 3 then
+	if auxvida == 1 then
 		life:vida3()	
+	end
+	if auxvida == 0 then
+		life:derrota()
 	end		
 end
 
@@ -86,19 +98,21 @@ function verificaVitoria(auxvida)
 	end
 	if auxvitoria -1 == 5 then
 		 vitoria:vitoria5()
+		 vitoria:vitoria()
 	end
 end
 
 function colisaoCarro(event)
-auxvida = auxvida + 1	
+auxvida = auxvida - 1	
 removeSapo()
 removeCarro()
 removeCenario()
 cenario.criar()
 vitoria:criarChegada()
 carro.criar()
+adicionaCorpoCarro()
 sapo.criar()
-print(auxvida)
+verificaVitoria(auxvitoria)
 verificaVida(auxvida)
 end	  
 
@@ -112,8 +126,10 @@ removeCenario()
 cenario.criar()
 vitoria:criarChegada()
 carro.criar()
+adicionaCorpoCarro()
 sapo.criar()
 verificaVitoria(auxvitoria)
+verificaVida(auxvida)
 end	  
 
 function movimentopista1()
@@ -121,18 +137,15 @@ function movimentopista1()
 	carro.carro1.x = carro.carro1.x + 20
 	physics.addBody( carro.carro1, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro1:addEventListener("collision", colisaoCarro)
 
 	carro.carro2.x = carro.carro2.x + 20
 	physics.addBody( carro.carro2, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro2:addEventListener("collision", colisaoCarro)
 
 	carro.carro3.x = carro.carro3.x + 20
 	physics.addBody( carro.carro3, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro3:addEventListener("collision", colisaoCarro)
-
+	
 	if carro.carro1.x > display.contentWidth + 50 then
 		carro.carro1.x = 50
 		carro.carro1.y = 325
@@ -155,17 +168,14 @@ function movimentopista2()
 	carro.carro4.x = carro.carro4.x - 20
 	physics.addBody( carro.carro4, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro4:addEventListener("collision", colisaoCarro)
-
+	
 	carro.carro5.x = carro.carro5.x - 20
 	physics.addBody( carro.carro5, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro5:addEventListener("collision", colisaoCarro)
 
 	carro.carro6.x = carro.carro6.x - 20
 	physics.addBody( carro.carro6, "dynamic")
 	physics.setGravity( 0, 0 )
-	carro.carro6:addEventListener("collision", colisaoCarro)
 
 	
 	if carro.carro4.x < - 50 then
@@ -227,10 +237,10 @@ botaocima:addEventListener("touch", moverCima)
 botaobaixo:addEventListener("touch", moverBaixo)
 botaoesquerda:addEventListener("touch", moverEsquerda)
 botaodireita:addEventListener("touch", moverDireita)
---[[carro.carro1:addEventListener("collision", colisaoCarro)
+carro.carro1:addEventListener("collision", colisaoCarro)
 carro.carro2:addEventListener("collision", colisaoCarro)
 carro.carro3:addEventListener("collision", colisaoCarro)
 carro.carro4:addEventListener("collision", colisaoCarro)
 carro.carro5:addEventListener("collision", colisaoCarro)
-carro.carro6:addEventListener("collision", colisaoCarro)]]
+carro.carro6:addEventListener("collision", colisaoCarro)
 vitoria.chegada:addEventListener("collision", colisaoChegada)

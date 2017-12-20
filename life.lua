@@ -1,7 +1,8 @@
 local life = {
 			vida1, 
 			vida2,
-			vida3}
+			vida3,
+			derrota}
 
 
 function life:vida( )
@@ -38,6 +39,13 @@ function life:vida3( )
 		vida3.x = display.contentWidth * 0.95
 		vida3.y = display.contentHeight * 0.09
 
+end
+
+function life:derrota()
+
+		derrota = display.newImageRect( "derrota.png", display.contentWidth, display.contentHeight )
+		derrota.x = display.contentCenterX 
+		derrota.y = display.contentCenterY	
 end
 
 return life
