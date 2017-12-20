@@ -8,40 +8,10 @@ function sapo:criar()
 
 end
 
---[[function sapo:vida( )
-
-		vida1 = display.newImageRect( "coracao.png", 20, 20 )
-		vida1.x = display.contentWidth * 0.75
-		vida1.y = display.contentHeight * 0.09
-
-		vida2 = display.newImageRect( "coracao.png", 20, 20 )
-		vida2.x = display.contentWidth * 0.85
-		vida2.y = display.contentHeight * 0.09
-
-		vida3 = display.newImageRect( "coracao.png", 20, 20 )
-		vida3.x = display.contentWidth * 0.95
-		vida3.y = display.contentHeight * 0.09
-
+function sapo:adicionaCorpoSapo()
+	physics.addBody(sapo.corpo, "dynamic")
+	physics.setGravity(0,0)
 end
 
-function sapo:vida2( )
-
-		vida2 = display.newImageRect( "coracao.png", 20, 20 )
-		vida2.x = display.contentWidth * 0.85
-		vida2.y = display.contentHeight * 0.09
-
-		vida3 = display.newImageRect( "coracao.png", 20, 20 )
-		vida3.x = display.contentWidth * 0.95
-		vida3.y = display.contentHeight * 0.09
-
-end
-
-function sapo:vida3( )
-
-		vida3 = display.newImageRect( "coracao.png", 20, 20 )
-		vida3.x = display.contentWidth * 0.95
-		vida3.y = display.contentHeight * 0.09
-
-end]]
 
 return sapo
