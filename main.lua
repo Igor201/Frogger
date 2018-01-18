@@ -147,17 +147,17 @@ function movimentopista1()
 	physics.setGravity( 0, 0 )
 	
 	if carro.carro1.x > display.contentWidth + 50 then
-		carro.carro1.x = 50
+		carro.carro1.x = 0
 		carro.carro1.y = 325
 	end
 
 	if carro.carro2.x > display.contentWidth + 50 then
-		carro.carro2.x = 50
+		carro.carro2.x = 0
 		carro.carro2.y = 280
 	end
 
 	if carro.carro3.x > display.contentWidth + 50 then
-		carro.carro3.x = 50
+		carro.carro3.x = 0
 		carro.carro3.y = 235
 	end
 end
@@ -179,17 +179,17 @@ function movimentopista2()
 
 	
 	if carro.carro4.x < - 50 then
-		carro.carro4.x = 300
+		carro.carro4.x = display.contentWidth
 		carro.carro4.y = 175
 	end
 
 	if carro.carro5.x < -100 then
-		carro.carro5.x = 250
+		carro.carro5.x = display.contentWidth
 		carro.carro5.y = 130
 	end
 
 	if carro.carro6.x <  -50 then
-		carro.carro6.x = 450
+		carro.carro6.x = display.contentWidth
 		carro.carro6.y = 85
 	end
 

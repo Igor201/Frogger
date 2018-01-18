@@ -9,7 +9,7 @@ local carro = {
 function carro:criar()
 
 	carro.carro1 = display.newImageRect( "Carro1.png", 100, 40 )
-	carro.carro1.x = 20
+	carro.carro1.x = 0
 	carro.carro1.y = 325
 
 	carro.carro2 = display.newImageRect( "Carro2.png", 100, 40 )
